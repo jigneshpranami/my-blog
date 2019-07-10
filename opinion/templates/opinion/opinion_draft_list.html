@@ -1,0 +1,11 @@
+{% extends 'opinion/base.html' %}
+
+{% block content %}
+    {% for opinion in opinions %}
+        <div class="post">
+            <p class="date">created: {{ opinion.created_date|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'opinion_detail' pk=opinion.pk %}">{{ opinion.title }}</a></h1>
+            <p>{{ opinion.text|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{%  extends 'opinion/base.html' %}
+
+{% block content %}
+	{% for op in opinions %}
+	    <div class="post">
+	        <div class="date">
+                <p>published: {{ op.published_date }}</p>
+            </div>
+	        <h2><a href="{% url 'opinion_detail' pk=op.pk %}">{{ op.title }}</a></h2>
+	        <p>{{ op.text|linebreaksbr }}</p>
+	        <a href="{% url 'opinion_detail' pk=op.pk %}">Comments: {{ op.approved_comments.count }}</a>
+	    </div>
+	{% endfor %}
+{% endblock %}
